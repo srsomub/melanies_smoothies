@@ -1,9 +1,12 @@
 # Import python packages
 import streamlit as st 
-# import snowflake.snowpark.functions as f
+from snowflake.snowpark.functions import col
+from snowflake.snowpark.context import get_active_session
 
-cnx=st.connection("snowflake")
-session=cnx.session()
+session = get_active_session()  # enable only one time
+
+# cnx=st.connection("snowflake")
+# session=cnx.session()
 
 
 # Write directly to the app
