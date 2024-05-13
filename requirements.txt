@@ -1,5 +1,4 @@
-
-  - snowflake-connector-python
-  - python=3.8.*
-  - snowflake-snowpark-python
-  - streamlit==1.31.1
+# requirments.txt
+streamlit==1.31.1
+snowflake-connector-python 
+snowflake-snowpark-python
