@@ -1,5 +1,4 @@
 
-  - snowflake
   - snowflake-connector-python
   - python=3.8.*
   - snowflake-snowpark-python
