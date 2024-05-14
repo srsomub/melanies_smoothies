@@ -32,8 +32,7 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 
 # Convert snowflake dataframe to Pandas dataframe so that we can use loc function and search for values of search_on in API using FRUIT_NAME
 pd_df = my_dataframe.to_pandas()
-st.dataframe(pd_df) # display 
-st.stop()
+# st.dataframe(pd_df) # display  
 
 # multiselect return list object
 ingredients_list = st.multiselect(
@@ -46,11 +45,15 @@ ingredients_list = st.multiselect(
 # Display list as string;
 if ingredients_list:
     ingredients_string=''
-    for i in ingredients_list:
-        ingredients_string+= i + ' '
+    for fruit_chosen in ingredients_list:
+        ingredients_string+= fruit_chosen + ' '
+        
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+        st.stop()
 
         st.subheader(i+' Nutrition Information')
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+i) # return JSON response by sending API request
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_chosen) # return JSON response by sending API request
         ftv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True) # convert JSON to dataframe and display it.
 
  
