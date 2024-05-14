@@ -2,7 +2,7 @@
 import streamlit as st 
 from snowflake.snowpark.functions import col 
 import requests
-
+import pandas as pd
 
 
 
@@ -27,9 +27,13 @@ if name:
 
 
 # load data from your database
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('search_on'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('search_on'))
 # st.dataframe(data=my_dataframe, use_container_width=True)
 
+# Convert snowflake dataframe to Pandas dataframe so that we can use loc function and search for values of search_on in API using FRUIT_NAME
+pd_df = my_dataframe.to_pandas()
+st.dataframe(pd_df) # display 
+st.stop()
 
 # multiselect return list object
 ingredients_list = st.multiselect(
