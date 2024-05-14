@@ -51,8 +51,9 @@ if ingredients_list:
         st.write(pd_df['FRUIT_NAME']==fruit_chosen)
 
         
-        search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON']
-        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+        # search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON']
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'], 'SEARCH_ON']
+        st.write(search_on)
         st.stop()
 
         st.subheader(i+' Nutrition Information')
