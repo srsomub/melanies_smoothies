@@ -49,8 +49,8 @@ if ingredients_list:
         ingredients_string+= fruit_chosen + ' ' 
 
         
-        search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON']  # pd.loc[row_name, col_name]
-        st.stop()
+        search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON']  # pd.loc[row_name, col_name] 
+        st.write('The search value for ',fruit_chosen,'is ',search_on_val,'.')
 
         st.subheader(i+' Nutrition Information')
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_chosen) # return JSON response by sending API request
