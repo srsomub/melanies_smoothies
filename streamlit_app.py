@@ -46,14 +46,10 @@ ingredients_list = st.multiselect(
 if ingredients_list:
     ingredients_string=''
     for fruit_chosen in ingredients_list:
-        ingredients_string+= fruit_chosen + ' '
-        st.write(pd_df['FRUIT_NAME'])
-        st.write(pd_df['FRUIT_NAME']==fruit_chosen)
+        ingredients_string+= fruit_chosen + ' ' 
 
         
-        # search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON']
-        search_on=pd_df.loc['FRUIT_NAME', 'SEARCH_ON']
-        st.write(search_on)
+        search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON']  # pd.loc[row_name, col_name]
         st.stop()
 
         st.subheader(i+' Nutrition Information')
