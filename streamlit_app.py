@@ -52,7 +52,7 @@ if ingredients_list:
 
         
         # search_on=pd_df.loc[pd_df['FRUIT_NAME']==fruit_chosen, 'SEARCH_ON']
-        search_on=pd_df.loc[pd_df['FRUIT_NAME'], 'SEARCH_ON']
+        search_on=pd_df.loc[['FRUIT_NAME'], 'SEARCH_ON']
         st.write(search_on)
         st.stop()
 
