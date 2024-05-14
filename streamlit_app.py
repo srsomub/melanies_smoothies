@@ -44,7 +44,9 @@ if ingredients_list:
     ingredients_string=''
     for i in ingredients_list:
         ingredients_string=ingredients_string+' '+i
-    # st.write(ingredients_string)
+        fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{i}") # return JSON response by sending API request
+        ftv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True) # convert JSON to dataframe and display it.
+
  
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,"NAME_ON_ORDER")
             values ('""" + ingredients_string +"""', '"""+ name + """')""" 
@@ -57,7 +59,7 @@ if ingredients_list:
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon") # return JSON response
 # st.text(fruityvice_response.json())
-ftv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
+
 
 
 
